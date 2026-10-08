@@ -1,0 +1,3067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>LLAVISH INTERIO | Studio Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ix-bg: #221f14;
+      --ix-card-bg: #1a170f;
+      --ix-panel-bg: #14120b;
+      --ix-card-border: #332d1c;
+      --ix-border-light: rgba(255, 255, 255, 0.08);
+      --ix-yellow: #f5c84c;
+      --ix-yellow-hover: #fed35c;
+      --ix-text-white: #f5f3ec;
+      --ix-text-muted: #8e8771;
+      --ix-text-dim: #635d4d;
+      --ix-toggle-off: #3c3726;
+      --ix-toggle-dot-off: #756d56;
+      --ix-toggle-on: #f5c84c;
+      --ix-toggle-dot-on: #16140b;
+      --green-comp: #3ed18f;
+      --red-del: #ff6565;
+      --orange-disc: #ff9800;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--ix-bg);
+      color: var(--ix-text-white);
+      padding: 16px 24px 80px;
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+
+    .container {
+      max-width: 1540px;
+      margin: 0 auto;
+    }
+
+    /* TOP GLOBAL NAVBAR */
+    .top-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--ix-border-light);
+    }
+
+    .nav-brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo-svg {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .brand-wordmark {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--ix-yellow);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-wordmark span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #dfd8c7;
+      border-left: 1px solid var(--ix-text-dim);
+      padding-left: 8px;
+    }
+
+    .nav-tab-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(26, 23, 15, 0.7);
+      padding: 4px 6px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--ix-card-border);
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--ix-text-muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-tab-btn:hover {
+      color: #fff;
+    }
+
+    .nav-tab-btn.active {
+      background: var(--ix-yellow);
+      color: #17150c;
+    }
+
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-quick-save-curr {
+      background: var(--ix-yellow);
+      border: 1px solid var(--ix-yellow);
+      color: #17150c;
+      padding: 7px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-quick-save-curr:hover {
+      background: var(--ix-yellow-hover);
+    }
+
+    .btn-quick-save-rev {
+      background: rgba(245, 200, 76, 0.12);
+      border: 1px solid var(--ix-yellow);
+      color: var(--ix-yellow);
+      padding: 7px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-quick-save-rev:hover {
+      background: var(--ix-yellow);
+      color: #17150c;
+    }
+
+    .tab-section-view {
+      display: none;
+    }
+
+    .tab-section-view.active {
+      display: block;
+    }
+
+    /* ==========================================================================
+       SECTION 1: QUOTATION BUILDER VIEW
+       ========================================================================== */
+    .client-bar-card {
+      background: rgba(26, 23, 15, 0.7);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 1.6fr 1fr 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 1080px) {
+      .client-bar-card {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .client-bar-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .client-input-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .client-input-cell label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ix-text-muted);
+    }
+
+    .client-input-cell input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 4px 0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .client-input-cell input:focus {
+      border-bottom-color: var(--ix-yellow);
+    }
+
+    .controls-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .unit-switch-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .unit-switch-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--ix-text-muted);
+      text-transform: uppercase;
+      margin-right: 4px;
+    }
+
+    .unit-pill {
+      background: rgba(28, 25, 14, 0.85);
+      border: 1px solid var(--ix-card-border);
+      color: var(--ix-text-muted);
+      padding: 7px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .unit-pill:hover {
+      color: #fff;
+      border-color: rgba(245, 200, 76, 0.35);
+    }
+
+    .unit-pill.active {
+      background: var(--ix-yellow);
+      color: #17150c;
+      border-color: var(--ix-yellow);
+    }
+
+    .btn-add-section-top {
+      background: rgba(245, 200, 76, 0.1);
+      border: 1px dashed var(--ix-yellow);
+      color: var(--ix-yellow);
+      padding: 7px 15px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-add-section-top:hover {
+      background: var(--ix-yellow);
+      color: #17150c;
+    }
+
+    .finish-tier-box {
+      background: var(--ix-card-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-md);
+      padding: 4px 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .finish-tier-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--ix-text-muted);
+      text-transform: uppercase;
+      padding: 0 8px;
+    }
+
+    .tier-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--ix-text-muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tier-tab-btn.active {
+      background: var(--ix-yellow);
+      color: #17150c;
+    }
+
+    .interix-stage-card {
+      background: var(--ix-card-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .interix-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 1100px) {
+      .interix-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rooms-columns-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .room-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: rgba(20, 18, 11, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    /* REFINED 2-ROW ROOM HEADER: CLEAN, UNCONSTRAINED & NEVER CLIPPED */
+    .room-col-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .room-header-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .room-col-title {
+      background: transparent;
+      border: none;
+      border-bottom: 1px dashed transparent;
+      color: #fff;
+      font-size: 1.18rem;
+      font-weight: 800;
+      outline: none;
+      width: 100%;
+      min-width: 0;
+      letter-spacing: -0.2px;
+    }
+
+    .room-col-title:focus {
+      border-bottom-color: var(--ix-yellow);
+    }
+
+    .room-header-sub-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .room-tier-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .room-tier-label-tiny {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--ix-text-muted);
+    }
+
+    .room-tier-select {
+      background: #14120b;
+      border: 1px solid var(--ix-card-border);
+      border-radius: 4px;
+      color: var(--ix-yellow);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .room-col-total {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--ix-yellow);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .btn-del-section {
+      background: transparent;
+      border: none;
+      color: var(--ix-text-dim);
+      font-size: 1.25rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 6px;
+      transition: color 0.15s;
+    }
+
+    .btn-del-section:hover {
+      color: var(--red-del);
+    }
+
+    .items-vertical-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .item-line {
+      display: grid;
+      grid-template-columns: 46px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      transition: opacity 0.2s;
+    }
+
+    .item-line.is-off {
+      opacity: 0.35;
+    }
+
+    .ix-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .ix-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .ix-slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: var(--ix-toggle-off);
+      transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: var(--radius-pill);
+    }
+
+    .ix-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--ix-toggle-dot-off);
+      transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 50%;
+    }
+
+    input:checked + .ix-slider {
+      background-color: var(--ix-toggle-on);
+    }
+
+    input:checked + .ix-slider:before {
+      transform: translateX(20px);
+      background-color: var(--ix-toggle-dot-on);
+    }
+
+    .item-info {
+      overflow: hidden;
+    }
+
+    .item-title-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .item-title-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #edebe4;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+
+    .item-title-name:hover {
+      color: var(--ix-yellow);
+    }
+
+    .tier-override-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: rgba(245, 200, 76, 0.15);
+      border: 1px solid rgba(245, 200, 76, 0.4);
+      color: var(--ix-yellow);
+    }
+
+    .tier-override-badge.luxury {
+      background: rgba(255, 222, 122, 0.2);
+      border-color: #f5c84c;
+      color: #ffde7a;
+    }
+
+    .tier-override-badge.premium {
+      background: rgba(62, 209, 143, 0.15);
+      border-color: #3ed18f;
+      color: #3ed18f;
+    }
+
+    .tier-override-badge.standard {
+      background: rgba(142, 135, 113, 0.15);
+      border-color: #8e8771;
+      color: #dfd8c7;
+    }
+
+    .item-meta-dims {
+      font-size: 0.77rem;
+      color: var(--ix-text-muted);
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .unit-tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(255, 255, 255, 0.16);
+      padding: 1px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .unit-tag:hover {
+      border-color: var(--ix-yellow);
+      color: #fff;
+    }
+
+    .discount-badge-line {
+      color: var(--orange-disc);
+      font-size: 0.74rem;
+      font-weight: 600;
+      background: rgba(255, 152, 0, 0.1);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .comp-toggle-btn {
+      border: none;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .comp-toggle-btn.is-comp {
+      background: rgba(62, 209, 143, 0.18);
+      color: var(--green-comp);
+      border: 1px solid rgba(62, 209, 143, 0.35);
+    }
+
+    .comp-toggle-btn.not-comp {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ix-text-dim);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .comp-toggle-btn.not-comp:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .item-price-view {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #edebe4;
+      text-align: right;
+      min-width: 78px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .item-price-view.is-off-text {
+      color: var(--ix-text-dim);
+      font-weight: 500;
+      font-size: 0.86rem;
+    }
+
+    .item-price-view.is-comp-text {
+      color: var(--green-comp);
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .btn-add-item-row {
+      background: transparent;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      color: var(--ix-text-muted);
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.2s;
+      margin-top: 4px;
+    }
+
+    .btn-add-item-row:hover {
+      border-color: var(--ix-yellow);
+      color: var(--ix-yellow);
+    }
+
+    .estimate-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .estimate-header-block {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 14px;
+    }
+
+    .estimate-title-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ix-text-muted);
+    }
+
+    .estimate-big-price {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: var(--ix-yellow);
+      line-height: 1.05;
+      margin-top: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .estimate-subtitle {
+      color: #c9c3b2;
+      font-size: 0.88rem;
+      margin-top: 6px;
+    }
+
+    .calc-breakdown-card {
+      background: var(--ix-panel-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.84rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--ix-text-muted);
+    }
+
+    .breakdown-row.clickable-benefit-row {
+      cursor: pointer;
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+
+    .breakdown-row.clickable-benefit-row:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .breakdown-row.discount-row {
+      color: var(--orange-disc);
+      font-weight: 600;
+    }
+
+    .breakdown-row.comp-row {
+      color: var(--green-comp);
+      font-weight: 600;
+    }
+
+    .breakdown-row.final-net {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 8px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .benefit-details-tray {
+      display: none;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 0.76rem;
+      line-height: 1.5;
+      margin-top: -2px;
+      margin-bottom: 4px;
+    }
+
+    .benefit-item-entry {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+      padding: 4px 0;
+    }
+
+    .benefit-item-entry:last-child {
+      border-bottom: none;
+    }
+
+    .btn-action-cta {
+      background: var(--ix-yellow);
+      color: #17150c;
+      border: none;
+      padding: 14px 20px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.15s, transform 0.15s;
+      box-shadow: 0 6px 20px rgba(245, 200, 76, 0.2);
+    }
+
+    .btn-action-cta:hover {
+      background: var(--ix-yellow-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-save-current-action {
+      background: rgba(245, 200, 76, 0.15);
+      border: 1px solid var(--ix-yellow);
+      color: var(--ix-yellow);
+      padding: 12px 18px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-save-current-action:hover {
+      background: var(--ix-yellow);
+      color: #17150c;
+    }
+
+    .collapsible-box {
+      background: var(--ix-panel-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .collapsible-head {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #dfd8c7;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .collapsible-body {
+      padding: 12px 14px;
+      font-size: 0.8rem;
+      color: var(--ix-text-muted);
+      line-height: 1.6;
+    }
+
+    .collapsible-textarea {
+      width: 100%;
+      min-height: 130px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 8px;
+      color: #edebe4;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      resize: vertical;
+      outline: none;
+    }
+
+    .collapsible-textarea:focus {
+      border-color: var(--ix-yellow);
+    }
+
+    /* ==========================================================================
+       SECTION 2: PROJECTS MANAGEMENT VIEW
+       ========================================================================== */
+    .projects-dashboard-card {
+      background: var(--ix-card-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+    }
+
+    .section-headline-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-headline-bar h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .project-item-card {
+      background: var(--ix-panel-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+
+    .project-item-card:hover {
+      border-color: var(--ix-yellow);
+      transform: translateY(-2px);
+    }
+
+    .p-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .p-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .p-card-badge {
+      font-size: 0.7rem;
+      background: rgba(245, 200, 76, 0.15);
+      color: var(--ix-yellow);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .p-card-site {
+      font-size: 0.82rem;
+      color: var(--ix-text-muted);
+    }
+
+    .p-card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .btn-danger-del {
+      background: rgba(255, 101, 101, 0.1);
+      border: 1px solid rgba(255, 101, 101, 0.35);
+      color: var(--red-del);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .btn-danger-del:hover {
+      background: var(--red-del);
+      color: #111;
+    }
+
+    /* ==========================================================================
+       SECTION 3: COMPARE VIEW
+       ========================================================================== */
+    .compare-container-card {
+      background: var(--ix-card-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      overflow-x: auto;
+    }
+
+    .compare-matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 820px;
+    }
+
+    .compare-matrix-table th {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--ix-card-border);
+      background: rgba(0,0,0,0.25);
+    }
+
+    .compare-matrix-table th.col-tier {
+      width: 25%;
+    }
+
+    .compare-matrix-table td {
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: top;
+    }
+
+    .compare-matrix-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .compare-matrix-table .row-cat {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .compare-tier-price {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--ix-yellow);
+      margin-bottom: 4px;
+    }
+
+    /* ==========================================================================
+       SECTION 4: MASTER RATE CARD STANDALONE VIEW
+       ========================================================================== */
+    .ratecard-view-card {
+      background: var(--ix-card-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+    }
+
+    .ratecard-search-strip {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .ratecard-search-input {
+      flex: 1;
+      min-width: 260px;
+      background: #111;
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    .ratecard-search-input:focus {
+      border-color: var(--ix-yellow);
+    }
+
+    .master-rate-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .master-rate-table th {
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ix-text-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .master-rate-table td {
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .master-rate-table input {
+      background: #111;
+      border: 1px solid var(--ix-card-border);
+      border-radius: 4px;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      width: 100%;
+      max-width: 140px;
+      outline: none;
+    }
+
+    .master-rate-table input:focus {
+      border-color: var(--ix-yellow);
+      color: var(--ix-yellow);
+    }
+
+    /* ==========================================================================
+       SECTION 5: REVISIONS VIEW
+       ========================================================================== */
+    .revisions-card {
+      background: var(--ix-card-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+    }
+
+    .client-folders-container {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .client-folder-card {
+      background: var(--ix-panel-bg);
+      border: 1px solid var(--ix-card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .client-folder-header {
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .client-folder-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .client-folder-count {
+      font-size: 0.76rem;
+      background: rgba(245, 200, 76, 0.15);
+      color: var(--ix-yellow);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .client-revisions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 18px;
+    }
+
+    .revision-entry-row {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .revision-entry-row:hover {
+      border-color: var(--ix-yellow);
+      background: rgba(245, 200, 76, 0.04);
+      transform: translateX(3px);
+    }
+
+    .rev-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--ix-yellow);
+      background: rgba(245, 200, 76, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 8px;
+    }
+
+    .rev-meta {
+      font-size: 0.8rem;
+      color: var(--ix-text-muted);
+    }
+
+    .rev-amount {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       SECTION 6: PREVIEW & LIVE EDITABLE PRINT SHEET
+       ========================================================================== */
+    .preview-workbench-card {
+      background: #fff;
+      color: #111;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .preview-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      background: #221f14;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      color: #fff;
+    }
+
+    .sheet-brand-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #111;
+    }
+
+    .sheet-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      color: #a87900;
+      margin-bottom: 20px;
+    }
+
+    .sheet-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: #fbfbfb;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 22px;
+    }
+
+    .sheet-meta-cell strong {
+      display: block;
+      font-size: 0.72rem;
+      color: #777;
+      text-transform: uppercase;
+    }
+
+    .sheet-meta-cell span[contenteditable] {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #111;
+      border-bottom: 1px dashed #ccc;
+      outline: none;
+      display: inline-block;
+      min-width: 80px;
+    }
+
+    .sheet-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 18px;
+    }
+
+    .sheet-table th {
+      background: #f2efe9;
+      border-bottom: 1px solid #bbb;
+      padding: 8px 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .sheet-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #eee;
+      font-size: 0.88rem;
+    }
+
+    .sheet-table td[contenteditable] {
+      outline: none;
+    }
+
+    .sheet-table td[contenteditable]:focus {
+      background: #fff9e6;
+    }
+
+    .sheet-total-block {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 18px;
+    }
+
+    .sheet-total-box {
+      width: 320px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px 16px;
+      background: #fafafa;
+    }
+
+    .sheet-total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 0.88rem;
+    }
+
+    .sheet-total-row.net {
+      border-top: 2px solid #111;
+      padding-top: 8px;
+      font-weight: 900;
+      font-size: 1.15rem;
+      color: #a87900;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 9999;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #1c190e;
+      border: 1px solid var(--ix-yellow);
+      width: 100%;
+      max-width: 520px;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-box h3 {
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .field-group {
+      margin-bottom: 14px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--ix-text-muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    .field-group input, .field-group select {
+      width: 100%;
+      background: #121008;
+      border: 1px solid var(--ix-card-border);
+      border-radius: 6px;
+      padding: 9px 12px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .field-group input:focus, .field-group select:focus {
+      border-color: var(--ix-yellow);
+    }
+
+    .modal-btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .btn-secondary-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--ix-card-border);
+      color: #fff;
+      padding: 10px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0 !important;
+      }
+      .top-navbar, .preview-header-bar, .modal-overlay {
+        display: none !important;
+      }
+      .preview-workbench-card {
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- TOP NAVBAR -->
+  <header class="top-navbar">
+    <div class="nav-brand-wrap">
+      <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" stroke="#f5c84c" stroke-width="4.5">
+        <polygon points="50,10 15,80 85,80" />
+        <polygon points="50,26 27,73 73,73" />
+        <polygon points="50,42 39,66 61,66" />
+      </svg>
+      <div class="brand-wordmark">
+        LLAVISH <span>INTERIO</span>
+      </div>
+    </div>
+
+    <!-- 6 PRIMARY TABS -->
+    <nav class="nav-tab-links">
+      <button class="nav-tab-btn" data-target="tabProjects">Projects</button>
+      <button class="nav-tab-btn active" data-target="tabQuotation">Quotation</button>
+      <button class="nav-tab-btn" data-target="tabCompare">Compare</button>
+      <button class="nav-tab-btn" data-target="tabRateCard">Rate Card</button>
+      <button class="nav-tab-btn" data-target="tabRevisions">Revisions</button>
+      <button class="nav-tab-btn" data-target="tabPreview">Preview</button>
+    </nav>
+
+    <div class="nav-right-actions">
+      <!-- BUTTON 1: IN-PLACE CURRENT QUOTATION SAVE -->
+      <button class="btn-quick-save-curr" id="btnSaveCurrentQuotationDirect" title="Overwrites and updates the current quotation without creating a new revision history">
+        Save Current Version
+      </button>
+      <!-- BUTTON 2: MILESTONE REVISION SAVE -->
+      <button class="btn-quick-save-rev" id="btnQuickSaveRevision" title="Creates a new historical revision checkpoint">
+        + Save Revision
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       TAB 1: PROJECTS
+       ======================================================================== -->
+  <section class="tab-section-view" id="tabProjects">
+    <div class="projects-dashboard-card">
+      <div class="section-headline-bar">
+        <div>
+          <h2>Client Projects Directory</h2>
+          <p style="color:var(--ix-text-muted); font-size:0.88rem;">Manage client profile information, site details, and switch between active project scopes.</p>
+        </div>
+        <button class="btn-action-cta" id="btnOpenNewProjectModal">+ Start New Project</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TAB 2: QUOTATION BUILDER
+       ======================================================================== -->
+  <section class="tab-section-view active" id="tabQuotation">
+    <div class="client-bar-card">
+      <div class="client-input-cell">
+        <label>Client Name</label>
+        <input type="text" id="custNameInput" value="Mr. Mihir Patel" />
+      </div>
+      <div class="client-input-cell">
+        <label>Project / Site Address</label>
+        <input type="text" id="custSiteInput" value="Vaikunth Bungalows, Vadodara" />
+      </div>
+      <div class="client-input-cell">
+        <label>Contact Phone</label>
+        <input type="text" id="custPhoneInput" value="+91 98765 43210" />
+      </div>
+      <div class="client-input-cell">
+        <label>Quotation Date</label>
+        <input type="text" id="custDateInput" value="11/09/2026" />
+      </div>
+      <div class="client-input-cell">
+        <label>Scope / Built-up Area</label>
+        <input type="text" id="custAreaInput" value="3BHK (~1,850 sq.ft)" />
+      </div>
+    </div>
+
+    <div class="controls-strip">
+      <div class="unit-switch-group">
+        <span class="unit-switch-label">Unit Layout:</span>
+        <button class="unit-pill" data-type="2bhk">2 BHK</button>
+        <button class="unit-pill active" data-type="3bhk">3 BHK</button>
+        <button class="unit-pill" data-type="4bhk">4 BHK</button>
+        <button class="btn-add-section-top" id="btnAddEmptySection">+ Add Extra Section</button>
+      </div>
+
+      <div class="finish-tier-box">
+        <span class="finish-tier-label">DEFAULT FINISH TIER</span>
+        <button class="tier-tab-btn" data-tier="standard">Standard</button>
+        <button class="tier-tab-btn" data-tier="premium">Premium</button>
+        <button class="tier-tab-btn active" data-tier="luxury">Luxury</button>
+      </div>
+    </div>
+
+    <div class="interix-stage-card">
+      <div class="interix-grid-layout">
+        <div class="rooms-columns-flow" id="roomsColsFlow"></div>
+
+        <aside class="estimate-sidebar">
+          <div class="estimate-header-block">
+            <div class="estimate-title-label">ESTIMATE TOTAL</div>
+            <div class="estimate-big-price" id="estimateBigPrice">₹0</div>
+            <div class="estimate-subtitle" id="estimateSubtitle">Default Luxury finish, 0 units selected</div>
+          </div>
+
+          <div class="calc-breakdown-card">
+            <div class="breakdown-row">
+              <span>Gross Value:</span>
+              <span id="grossSumDisplay">₹0</span>
+            </div>
+
+            <div class="breakdown-row discount-row clickable-benefit-row" id="discLedgerRow" style="display:none;" title="Click to view discounted items breakdown">
+              <span>Special Discount ▾</span>
+              <span id="discSumDisplay">-₹0</span>
+            </div>
+            <div class="benefit-details-tray" id="discTray"></div>
+
+            <div class="breakdown-row comp-row clickable-benefit-row" id="compLedgerRow" style="display:none;" title="Click to view complimentary items breakdown">
+              <span>Complimentary Perks ▾</span>
+              <span id="compSumDisplay">-₹0</span>
+            </div>
+            <div class="benefit-details-tray" id="compTray"></div>
+
+            <div class="breakdown-row final-net">
+              <span>Net Payable:</span>
+              <span id="netFinalDisplay" style="color:var(--ix-yellow);">₹0</span>
+            </div>
+          </div>
+
+          <button class="btn-save-current-action" id="btnSaveCurrentQuotationSidebar">
+            <span>Save Current Version</span>
+          </button>
+
+          <button class="btn-action-cta" id="btnGoToPreview">
+            <span>View Full Quotation & Print →</span>
+          </button>
+
+          <div class="collapsible-box">
+            <div class="collapsible-head" data-target="specsBox">
+              <span id="specDrawerHeaderTitle">Material Specifications (Luxury)</span>
+              <span>Edit ▾</span>
+            </div>
+            <div class="collapsible-body" id="specsBox">
+              <textarea class="collapsible-textarea" id="materialSpecsArea"></textarea>
+            </div>
+          </div>
+
+          <div class="collapsible-box">
+            <div class="collapsible-head" data-target="milestonesBox">
+              <span>Payment Schedule Terms</span>
+              <span>View ▾</span>
+            </div>
+            <div class="collapsible-body" id="milestonesBox">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>Token Booking:</span> <strong style="color:var(--ix-yellow);">10%</strong></div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>After Design Finalization:</span> <strong style="color:var(--ix-yellow);">20%</strong></div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>Before False Ceiling:</span> <strong style="color:var(--ix-yellow);">10%</strong></div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>Before Material Loading:</span> <strong style="color:var(--ix-yellow);">30%</strong></div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>Mid Execution:</span> <strong style="color:var(--ix-yellow);">25%</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Project Handover:</span> <strong style="color:var(--ix-yellow);">5%</strong></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TAB 3: COMPARE SECTION
+       ======================================================================== -->
+  <section class="tab-section-view" id="tabCompare">
+    <div class="compare-container-card">
+      <div class="section-headline-bar">
+        <div>
+          <h2>Package Comparison</h2>
+          <p style="color:var(--ix-text-muted); font-size:0.88rem;">Live financial and material specification comparison across all 3 tiers for this project.</p>
+        </div>
+      </div>
+
+      <table class="compare-matrix-table" id="compareMatrixTable">
+        <thead>
+          <tr>
+            <th style="width: 28%;">Scope / Room Area</th>
+            <th class="col-tier">Standard Package</th>
+            <th class="col-tier">Premium Package</th>
+            <th class="col-tier">Luxury Package</th>
+          </tr>
+        </thead>
+        <tbody id="compareMatrixBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TAB 4: RATE CARD SECTION
+       ======================================================================== -->
+  <section class="tab-section-view" id="tabRateCard">
+    <div class="ratecard-view-card">
+      <div class="section-headline-bar">
+        <div>
+          <h2>Master Rate Card</h2>
+          <p style="color:var(--ix-text-muted); font-size:0.88rem;">Define baseline standard rates per unit for Standard, Premium, and Luxury packages.</p>
+        </div>
+        <button class="btn-action-cta" id="btnAddNewRateCardItem">+ Add Item to Rate Card</button>
+      </div>
+
+      <div class="ratecard-search-strip">
+        <input type="text" class="ratecard-search-input" id="rateCardSearch" placeholder="Search master rates by item name..." />
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="master-rate-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Item Name</th>
+              <th style="width: 15%;">Unit</th>
+              <th style="width: 16%;">Standard Rate (₹)</th>
+              <th style="width: 16%;">Premium Rate (₹)</th>
+              <th style="width: 16%;">Luxury Rate (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="masterRateTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TAB 5: REVISIONS SECTION
+       ======================================================================== -->
+  <section class="tab-section-view" id="tabRevisions">
+    <div class="revisions-card">
+      <div class="section-headline-bar">
+        <div>
+          <h2>Client Revision Folders</h2>
+          <p style="color:var(--ix-text-muted); font-size:0.88rem;">Click on any revision entry to immediately load that quotation snapshot.</p>
+        </div>
+        <button class="btn-action-cta" id="btnCreateNewRevisionNow">+ Save Current Scope as Revision</button>
+      </div>
+
+      <div class="client-folders-container" id="clientFoldersContainer"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       TAB 6: PREVIEW SECTION
+       ======================================================================== -->
+  <section class="tab-section-view" id="tabPreview">
+    <div class="preview-header-bar">
+      <span><strong>Live Client Preview Sheet</strong> (Click on any text or quantity below to edit live)</span>
+      <button class="btn-action-cta" id="btnPrintFromPreview" style="padding:8px 18px; font-size:0.88rem;">
+        Print / Save PDF
+      </button>
+    </div>
+
+    <div class="preview-workbench-card" id="previewSheetContainer">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+        <div>
+          <div class="sheet-brand-heading">LLAVISH INTERIO</div>
+          <div class="sheet-sub">LUXURY INTERIOR DESIGN STUDIO</div>
+        </div>
+        <div style="text-align:right;">
+          <h2 style="font-size:1.15rem; font-weight:800; text-transform:uppercase;">OFFICIAL QUOTATION</h2>
+          <span style="background:#f4ecd8; border:1px solid #cbb27a; color:#725302; padding:3px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; text-transform:uppercase;" id="sheetTierBadge">
+            LUXURY PACKAGE
+          </span>
+        </div>
+      </div>
+
+      <div class="sheet-meta-grid">
+        <div class="sheet-meta-cell">
+          <strong>CLIENT NAME</strong>
+          <span contenteditable="true" id="sheetClientName">Mr. Mihir Patel</span>
+        </div>
+        <div class="sheet-meta-cell">
+          <strong>SITE ADDRESS</strong>
+          <span contenteditable="true" id="sheetSiteAddress">Vaikunth Bungalows, Vadodara</span>
+        </div>
+        <div class="sheet-meta-cell">
+          <strong>DATE</strong>
+          <span contenteditable="true" id="sheetQuoteDate">11/09/2026</span>
+        </div>
+        <div class="sheet-meta-cell">
+          <strong>PROJECT SCOPE</strong>
+          <span contenteditable="true" id="sheetScope">3BHK (~1,850 sq.ft)</span>
+        </div>
+      </div>
+
+      <div id="sheetTablesContainer"></div>
+
+      <div class="sheet-total-block">
+        <div class="sheet-total-box">
+          <div class="sheet-total-row">
+            <span>Gross Value:</span>
+            <span id="sheetGrossVal">₹0</span>
+          </div>
+          <div class="sheet-total-row" id="sheetDiscRow" style="color:#d9534f; display:none;">
+            <span>Special Discount:</span>
+            <span id="sheetDiscVal">-₹0</span>
+          </div>
+          <div class="sheet-total-row" id="sheetCompRow" style="color:#28a745; display:none;">
+            <span>Complimentary Perks:</span>
+            <span id="sheetCompVal">-₹0</span>
+          </div>
+          <div class="sheet-total-row net">
+            <span>NET ESTIMATE:</span>
+            <span id="sheetNetVal">₹0</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; border-top:1px solid #ddd; padding-top:16px;">
+        <h4 style="font-size:0.85rem; font-weight:800; text-transform:uppercase; margin-bottom:6px;">MATERIAL QUALITY SPECIFICATIONS</h4>
+        <pre contenteditable="true" id="sheetSpecsPre" style="white-space:pre-wrap; font-family:'Plus Jakarta Sans', sans-serif; font-size:0.82rem; color:#444; background:#fbfbfb; border:1px solid #eee; padding:10px; border-radius:4px; outline:none;"></pre>
+      </div>
+
+      <div style="margin-top:16px; border-top:1px solid #eee; padding-top:12px; display:flex; justify-content:space-between; font-size:0.75rem; color:#888;">
+        <span>LLAVISH INTERIO • Vadodara, Gujarat</span>
+        <span>Authorized Signature: _______________________</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ITEM EDIT MODAL -->
+<div class="modal-overlay" id="editItemModal">
+  <div class="modal-box">
+    <h3 id="modalItemHeader">Edit Item</h3>
+    <div class="field-group">
+      <label>Item Name / Description</label>
+      <input type="text" id="modalInputName" />
+    </div>
+    <div class="field-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <div>
+        <label>Quantity / Dimension</label>
+        <input type="number" id="modalInputQty" step="0.5" />
+      </div>
+      <div>
+        <label>Unit Label (sft, rft, nos)</label>
+        <input type="text" id="modalInputUnit" />
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Package Tier for this Item</label>
+      <select id="modalInputTier">
+        <option value="inherit">Inherit Room Tier</option>
+        <option value="standard">Standard Finish</option>
+        <option value="premium">Premium Finish</option>
+        <option value="luxury">Luxury Finish</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <label>Applied Rate for this item (₹)</label>
+      <input type="number" id="modalInputRate" />
+      <div id="modalRateHint" style="font-size:0.75rem; color:var(--orange-disc); margin-top:4px;"></div>
+    </div>
+    <div class="field-group" style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" id="modalInputComp" style="width:18px; height:18px;" />
+      <label for="modalInputComp" style="margin:0; text-transform:none; font-size:0.85rem; color:#fff; cursor:pointer;">
+        Mark as Complimentary (FREE for Client)
+      </label>
+    </div>
+    <div class="modal-btn-row">
+      <button class="btn-action-cta" style="flex:1; padding:10px;" id="btnModalSave">Save</button>
+      <button class="btn-secondary-action" id="btnModalCancel">Cancel</button>
+      <button class="btn-secondary-action" style="color:var(--red-del); border-color:rgba(255,101,101,0.3);" id="btnModalDelete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMPREHENSIVE NEW PROJECT CREATION MODAL -->
+<div class="modal-overlay" id="newProjectModal">
+  <div class="modal-box">
+    <h3>Start New Project</h3>
+    <div class="field-group">
+      <label>Client Full Name</label>
+      <input type="text" id="npClientName" placeholder="e.g. Mr. Rajesh Sharma" />
+    </div>
+    <div class="field-group">
+      <label>Site Address / Property Location</label>
+      <input type="text" id="npSiteAddress" placeholder="e.g. 402, Royal Residency, Alkapuri, Vadodara" />
+    </div>
+    <div class="field-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <div>
+        <label>Contact Phone</label>
+        <input type="text" id="npContactPhone" placeholder="+91 98980 00000" />
+      </div>
+      <div>
+        <label>Quotation Date</label>
+        <input type="text" id="npQuoteDate" value="11/09/2026" />
+      </div>
+    </div>
+    <div class="field-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <div>
+        <label>Typology / Layout</label>
+        <select id="npTypology">
+          <option value="2bhk">2 BHK</option>
+          <option value="3bhk" selected>3 BHK</option>
+          <option value="4bhk">4 BHK</option>
+        </select>
+      </div>
+      <div>
+        <label>Package Tier</label>
+        <select id="npFinishTier">
+          <option value="standard">Standard</option>
+          <option value="premium">Premium</option>
+          <option value="luxury" selected>Luxury</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Built-up Area / Project Note</label>
+      <input type="text" id="npBuiltArea" placeholder="e.g. 1,850 sq.ft Super Built-up" />
+    </div>
+    <div class="modal-btn-row">
+      <button class="btn-action-cta" style="flex:1; padding:10px;" id="btnCreateProjectSubmit">Create & Open Project</button>
+      <button class="btn-secondary-action" id="btnCancelNewProject">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // MATERIAL SPECS DICTIONARY
+  const materialSpecsDictionary = {
+    standard: `• Plywood: MR Plywood 303 Grade Commercial Ply (Range 70 - 75)
+• Hardware: Good Quality Hardware
+• Inner Liner: Off-White Laminate (Up to ₹450/sheet)
+• Exterior Laminate: Premium Designer Finish (Up to ₹1800/sheet)
+• Kitchen Finish: High-Gloss Acrylic (Up to ₹3000/sheet)
+• Sofa Material: Refresh Prime with ₹450/m fabric
+• Designer Glass: Fluted / Tinted profile shutters`,
+
+    premium: `• Kitchen: Waterproof 710 Grade Plywood (Range 90-95)
+• Other Rooms: Full Core 303 Grade Commercial Ply (Range 75-85)
+• Hardware: Godrej Soft-Close Hinges & Channels
+• Inner Liner: Fabric / Off-White Laminate (Up to ₹550/sheet)
+• Exterior Laminate: Premium Designer Finish (Up to ₹2000/sheet)
+• Kitchen Finish: High-Gloss Acrylic (Up to ₹3500/sheet)
+• Sofa Material: Sleepwell / Refresh Prime with ₹550 per mtr fabric
+• Designer Glass: Fluted / Tinted profile shutters with Godrej Hardware`,
+
+    luxury: `• Kitchen: Branded (Century, Greenply) Waterproof 710 Grade Plywood (Range 100 - 110)
+• Other Rooms: Branded Full Core 303 Grade Commercial Ply (Range 95 - 100)
+• Hardware: Hettich Soft-Close Hinges & Channels
+• Inner Liner: Fabric / Off-White Laminate (Up to ₹650/sheet)
+• Exterior Laminate: Premium Designer Finish (Up to ₹2200/sheet)
+• Kitchen Finish: High-Gloss Acrylic (Up to ₹3800/sheet)
+• Sofa Material: Sleepwell / Refresh Prime with ₹700 per mtr fabric
+• Designer Glass: Fluted / Tinted profile shutters with Hettich Hardware`
+  };
+
+  // MASTER RATE CARD
+  let masterRateCard = [
+    { name: "Ceiling", unit: "sft", standard: 90, premium: 120, luxury: 150 },
+    { name: "Mandir", unit: "sft", standard: 1800, premium: 2200, luxury: 2500 },
+    { name: "Tv Unit Paneling", unit: "sft", standard: 900, premium: 1100, luxury: 1300 },
+    { name: "Tv unit", unit: "rft", standard: 1800, premium: 2200, luxury: 2500 },
+    { name: "Palment", unit: "rft", standard: 600, premium: 800, luxury: 950 },
+    { name: "Sofa", unit: "rft", standard: 3500, premium: 4200, luxury: 4800 },
+    { name: "Highlight Wall", unit: "sft", standard: 200, premium: 300, luxury: 450 },
+    
+    { name: "Cabinets Below Platform", unit: "sft", standard: 1350, premium: 1550, luxury: 1750 },
+    { name: "Corckery Unit Above Platform", unit: "sft", standard: 1400, premium: 1600, luxury: 1800 },
+    { name: "Loft Above Platform", unit: "sft", standard: 1000, premium: 1200, luxury: 1400 },
+    { name: "Cabinets Below Service Platform", unit: "sft", standard: 1350, premium: 1550, luxury: 1750 },
+    { name: "Crockery Unit Above Service Platform", unit: "sft", standard: 1400, premium: 1600, luxury: 1800 },
+    { name: "Loft Unit Above Service Platform", unit: "sft", standard: 1000, premium: 1200, luxury: 1400 },
+
+    { name: "Bed", unit: "sft", standard: 1350, premium: 1500, luxury: 1700 },
+    { name: "Bed Head", unit: "sft", standard: 500, premium: 650, luxury: 850 },
+    { name: "Side Boxes", unit: "sft", standard: 900, premium: 1100, luxury: 1300 },
+    { name: "Highlighting Wall", unit: "sft", standard: 200, premium: 300, luxury: 450 },
+    { name: "Wardrobe", unit: "sft", standard: 1350, premium: 1550, luxury: 1750 },
+    { name: "Loft Above Wardrobe", unit: "sft", standard: 1000, premium: 1200, luxury: 1400 }
+  ];
+
+  function ensureInRateCard(itemName, unit = "sft", fallbackRate = 1200) {
+    let existing = masterRateCard.find(r => r.name.trim().toLowerCase() === itemName.trim().toLowerCase());
+    if (!existing) {
+      existing = {
+        name: itemName.trim(),
+        unit: unit,
+        standard: Math.round(fallbackRate * 0.85),
+        premium: fallbackRate,
+        luxury: Math.round(fallbackRate * 1.15)
+      };
+      masterRateCard.push(existing);
+      renderMasterRateCardTable();
+    }
+    return existing;
+  }
+
+  // ROOM TEMPLATES
+  function createLivingRoomItems() {
+    return [
+      { id: "i_" + Math.random(), name: "Ceiling", qty: 150, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Mandir", qty: 15, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Tv Unit Paneling", qty: 45, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Tv unit", qty: 6, unit: "rft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Palment", qty: 15, unit: "rft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Sofa", qty: 18, unit: "rft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Highlight Wall", qty: 120, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false }
+    ];
+  }
+
+  function createKitchenItems() {
+    return [
+      { id: "i_" + Math.random(), name: "Ceiling", qty: 70, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Cabinets Below Platform", qty: 35, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Corckery Unit Above Platform", qty: 20, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "Loft Above Platform", name: "Loft Above Platform", qty: 25, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Cabinets Below Service Platform", qty: 20, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Crockery Unit Above Service Platform", qty: 15, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Loft Unit Above Service Platform", qty: 18, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false }
+    ];
+  }
+
+  function createBedroomItems(bedNum) {
+    return [
+      { id: "i_" + Math.random(), name: "Ceiling", qty: 120, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Bed", qty: 39, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Bed Head", qty: 15, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Side Boxes", qty: 8, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Highlighting Wall", qty: 100, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "Wardrobe", name: "Wardrobe", qty: 56, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Loft Above Wardrobe", qty: 14, unit: "sft", customRate: null, tierOverride: "inherit", active: false, complementary: false },
+      { id: "i_" + Math.random(), name: "Palment", qty: 10, unit: "rft", customRate: null, tierOverride: "inherit", active: false, complementary: false }
+    ];
+  }
+
+  function getPresetRooms(type) {
+    if (type === "2bhk") {
+      return [
+        { id: "r_liv", title: "Living room", tierOverride: "inherit", items: createLivingRoomItems() },
+        { id: "r_kit", title: "Kitchen", tierOverride: "inherit", items: createKitchenItems() },
+        { id: "r_b1", title: "Bedroom 1", tierOverride: "inherit", items: createBedroomItems(1) },
+        { id: "r_b2", title: "Bedroom 2", tierOverride: "inherit", items: createBedroomItems(2) }
+      ];
+    } else if (type === "3bhk") {
+      return [
+        { id: "r_liv", title: "Living room", tierOverride: "inherit", items: createLivingRoomItems() },
+        { id: "r_kit", title: "Kitchen", tierOverride: "inherit", items: createKitchenItems() },
+        { id: "r_b1", title: "Bedroom 1", tierOverride: "inherit", items: createBedroomItems(1) },
+        { id: "r_b2", title: "Bedroom 2", tierOverride: "inherit", items: createBedroomItems(2) },
+        { id: "r_b3", title: "Bedroom 3", tierOverride: "inherit", items: createBedroomItems(3) }
+      ];
+    } else if (type === "4bhk") {
+      return [
+        { id: "r_liv", title: "Living room", tierOverride: "inherit", items: createLivingRoomItems() },
+        { id: "r_kit", title: "Kitchen", tierOverride: "inherit", items: createKitchenItems() },
+        { id: "r_b1", title: "Bedroom 1", items: createBedroomItems(1) },
+        { id: "r_b2", title: "Bedroom 2", items: createBedroomItems(2) },
+        { id: "r_b3", title: "Bedroom 3", items: createBedroomItems(3) },
+        { id: "r_b4", title: "Bedroom 4", items: createBedroomItems(4) }
+      ];
+    }
+    return [];
+  }
+
+  // STATE DATA
+  let activeRooms = getPresetRooms("3bhk");
+  let currentTier = "luxury";
+  let activeEditContext = null;
+  let currentProjectId = "PRJ-3BHK-8921";
+
+  // Persistent Projects Directory (Client info only - NO AMOUNTS)
+  let projectsDirectory = [
+    {
+      id: "PRJ-3BHK-8921",
+      client: "Mr. Mihir Patel",
+      site: "Vaikunth Bungalows, Vadodara",
+      phone: "+91 98765 43210",
+      date: "11/09/2026",
+      scope: "3BHK (~1,850 sq.ft)",
+      tier: "luxury",
+      rooms: JSON.parse(JSON.stringify(activeRooms)),
+      updatedAt: "2026-10-06 14:20"
+    }
+  ];
+
+  // Master Revisions Repository
+  let allRevisionsRepository = [
+    {
+      revId: "REV-101",
+      client: "Mr. Mihir Patel",
+      revNum: 1,
+      timestamp: "11/09/2026 10:30 AM",
+      tier: "luxury",
+      total: "₹15,30,071",
+      notes: "Initial scope finalization with client",
+      snapshot: JSON.parse(JSON.stringify(activeRooms))
+    }
+  ];
+
+  function formatINR(num) {
+    return "₹" + Math.round(num).toLocaleString('en-IN');
+  }
+
+  function resolveEffectiveTier(item, room, globalTier = currentTier) {
+    if (item.tierOverride && item.tierOverride !== "inherit") {
+      return item.tierOverride;
+    }
+    if (room && room.tierOverride && room.tierOverride !== "inherit") {
+      return room.tierOverride;
+    }
+    return globalTier;
+  }
+
+  function getMasterBaseRate(itemName, tier) {
+    const card = masterRateCard.find(r => r.name.trim().toLowerCase() === itemName.trim().toLowerCase());
+    if (card) {
+      return card[tier] || card.premium || 1200;
+    }
+    return 1200;
+  }
+
+  function evaluateItem(item, room, globalTier = currentTier) {
+    const effectiveTier = resolveEffectiveTier(item, room, globalTier);
+    const masterRate = getMasterBaseRate(item.name, effectiveTier);
+    const effectiveRate = item.customRate !== null ? item.customRate : masterRate;
+    const isDiscounted = effectiveRate < masterRate;
+    const discountPerUnit = isDiscounted ? (masterRate - effectiveRate) : 0;
+    const totalDiscount = discountPerUnit * item.qty;
+    const grossCost = masterRate * item.qty;
+    const netCost = effectiveRate * item.qty;
+
+    return {
+      effectiveTier,
+      isTierOverridden: effectiveTier !== globalTier,
+      masterRate,
+      effectiveRate,
+      isDiscounted,
+      discountPerUnit,
+      totalDiscount,
+      grossCost,
+      netCost
+    };
+  }
+
+  function updateTierSpecsView() {
+    const textarea = document.getElementById("materialSpecsArea");
+    const titleEl = document.getElementById("specDrawerHeaderTitle");
+    const tierName = currentTier.charAt(0).toUpperCase() + currentTier.slice(1);
+    
+    titleEl.innerText = `Material Specifications (${tierName})`;
+    textarea.value = materialSpecsDictionary[currentTier];
+  }
+
+  // ==========================================================================
+  // IN-PLACE QUOTATION SAVING
+  // ==========================================================================
+  function saveCurrentQuotationDirect() {
+    const clientName = (document.getElementById("custNameInput").value || "Valued Client").trim();
+    const siteAddr = (document.getElementById("custSiteInput").value || "-").trim();
+    const phone = (document.getElementById("custPhoneInput").value || "-").trim();
+    const dateVal = (document.getElementById("custDateInput").value || "-").trim();
+    const scopeVal = (document.getElementById("custAreaInput").value || "-").trim();
+
+    const now = new Date();
+    const timeStr = now.toLocaleDateString() + " " + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    let existingPrj = projectsDirectory.find(p => p.id === currentProjectId);
+    if (!existingPrj) {
+      existingPrj = projectsDirectory.find(p => p.client.toLowerCase() === clientName.toLowerCase());
+    }
+
+    if (existingPrj) {
+      existingPrj.client = clientName;
+      existingPrj.site = siteAddr;
+      existingPrj.phone = phone;
+      existingPrj.date = dateVal;
+      existingPrj.scope = scopeVal;
+      existingPrj.tier = currentTier;
+      existingPrj.rooms = JSON.parse(JSON.stringify(activeRooms));
+      existingPrj.updatedAt = timeStr;
+    } else {
+      const newPrj = {
+        id: currentProjectId,
+        client: clientName,
+        site: siteAddr,
+        phone: phone,
+        date: dateVal,
+        scope: scopeVal,
+        tier: currentTier,
+        rooms: JSON.parse(JSON.stringify(activeRooms)),
+        updatedAt: timeStr
+      };
+      projectsDirectory.unshift(newPrj);
+    }
+
+    alert(`Quotation changes for "${clientName}" saved successfully!`);
+    renderProjectsDirectory();
+  }
+
+  // ==========================================================================
+  // RENDER WORKSPACE (WITH CLEAN 2-ROW NON-CLIPPED ROOM HEADER)
+  // ==========================================================================
+  function renderWorkspace() {
+    const container = document.getElementById("roomsColsFlow");
+    container.innerHTML = "";
+
+    let grandGrossTotal = 0;
+    let grandSpecialDiscount = 0;
+    let grandComplimentary = 0;
+    let selectedCount = 0;
+
+    const discountDetailEntries = [];
+    const compDetailEntries = [];
+
+    activeRooms.forEach((room, rIdx) => {
+      let roomSubtotal = 0;
+
+      const col = document.createElement("div");
+      col.className = "room-col";
+
+      // 2-ROW HEADER CONTAINER
+      const header = document.createElement("div");
+      header.className = "room-col-header";
+
+      // ROW 1: ROOM TITLE (FULL WIDTH) & DELETE BUTTON
+      const topRow = document.createElement("div");
+      topRow.className = "room-header-top-row";
+
+      const titleInput = document.createElement("input");
+      titleInput.type = "text";
+      titleInput.className = "room-col-title";
+      titleInput.value = room.title;
+      titleInput.placeholder = "Section Name...";
+      titleInput.addEventListener("change", (e) => {
+        room.title = e.target.value;
+      });
+
+      const delBtn = document.createElement("button");
+      delBtn.className = "btn-del-section";
+      delBtn.innerHTML = "&times;";
+      delBtn.title = "Delete this section";
+      delBtn.addEventListener("click", () => {
+        if (confirm(`Delete section "${room.title || 'Untitled'}"?`)) {
+          activeRooms.splice(rIdx, 1);
+          renderWorkspace();
+        }
+      });
+
+      topRow.appendChild(titleInput);
+      topRow.appendChild(delBtn);
+
+      // ROW 2: TIER DROPDOWN SELECTOR & SECTION SUBTOTAL
+      const subRow = document.createElement("div");
+      subRow.className = "room-header-sub-row";
+
+      const tierWrap = document.createElement("div");
+      tierWrap.className = "room-tier-badge-wrap";
+
+      const tierLabel = document.createElement("span");
+      tierLabel.className = "room-tier-label-tiny";
+      tierLabel.innerText = "Tier:";
+
+      const roomTierSelect = document.createElement("select");
+      roomTierSelect.className = "room-tier-select";
+      roomTierSelect.title = "Override finish tier for this entire section";
+      roomTierSelect.innerHTML = `
+        <option value="inherit" ${room.tierOverride === 'inherit' ? 'selected' : ''}>Auto (${currentTier.toUpperCase()})</option>
+        <option value="standard" ${room.tierOverride === 'standard' ? 'selected' : ''}>Standard</option>
+        <option value="premium" ${room.tierOverride === 'premium' ? 'selected' : ''}>Premium</option>
+        <option value="luxury" ${room.tierOverride === 'luxury' ? 'selected' : ''}>Luxury</option>
+      `;
+      roomTierSelect.addEventListener("change", (e) => {
+        room.tierOverride = e.target.value;
+        renderWorkspace();
+      });
+
+      tierWrap.appendChild(tierLabel);
+      tierWrap.appendChild(roomTierSelect);
+
+      const totalDisplay = document.createElement("div");
+      totalDisplay.className = "room-col-total";
+
+      subRow.appendChild(tierWrap);
+      subRow.appendChild(totalDisplay);
+
+      header.appendChild(topRow);
+      header.appendChild(subRow);
+      col.appendChild(header);
+
+      // ITEM ROWS
+      const itemsList = document.createElement("div");
+      itemsList.className = "items-vertical-list";
+
+      room.items.forEach(item => {
+        const evalRes = evaluateItem(item, room);
+
+        if (item.active) {
+          selectedCount++;
+          grandGrossTotal += evalRes.grossCost;
+
+          if (evalRes.isDiscounted && !item.complementary) {
+            grandSpecialDiscount += evalRes.totalDiscount;
+            discountDetailEntries.push({
+              room: room.title || "Section",
+              name: item.name,
+              qty: item.qty,
+              unit: item.unit,
+              masterRate: evalRes.masterRate,
+              appliedRate: evalRes.effectiveRate,
+              savedAmt: evalRes.totalDiscount
+            });
+          }
+
+          if (item.complementary) {
+            grandComplimentary += evalRes.grossCost;
+            compDetailEntries.push({
+              room: room.title || "Section",
+              name: item.name,
+              qty: item.qty,
+              unit: item.unit,
+              waivedAmt: evalRes.grossCost
+            });
+          } else {
+            roomSubtotal += evalRes.netCost;
+          }
+        }
+
+        const line = document.createElement("div");
+        line.className = `item-line ${item.active ? '' : 'is-off'}`;
+
+        const switchLabel = document.createElement("label");
+        switchLabel.className = "ix-switch";
+        const chk = document.createElement("input");
+        chk.type = "checkbox";
+        chk.checked = item.active;
+        chk.addEventListener("change", () => {
+          item.active = chk.checked;
+          renderWorkspace();
+        });
+        const slider = document.createElement("span");
+        slider.className = "ix-slider";
+        switchLabel.appendChild(chk);
+        switchLabel.appendChild(slider);
+
+        const info = document.createElement("div");
+        info.className = "item-info";
+
+        const titleRow = document.createElement("div");
+        titleRow.className = "item-title-row";
+
+        const title = document.createElement("span");
+        title.className = "item-title-name";
+        title.innerText = item.name;
+        title.addEventListener("click", () => openItemModal(room.id, item.id));
+        titleRow.appendChild(title);
+
+        if (evalRes.isTierOverridden) {
+          const badge = document.createElement("span");
+          badge.className = `tier-override-badge ${evalRes.effectiveTier}`;
+          badge.innerText = evalRes.effectiveTier.toUpperCase();
+          titleRow.appendChild(badge);
+        }
+
+        const dims = document.createElement("div");
+        dims.className = "item-meta-dims";
+
+        const unitTag = document.createElement("span");
+        unitTag.className = "unit-tag";
+        unitTag.innerText = `${item.qty} ${item.unit} @ ₹${evalRes.effectiveRate}`;
+        unitTag.addEventListener("click", () => openItemModal(room.id, item.id));
+        dims.appendChild(unitTag);
+
+        if (evalRes.isDiscounted && !item.complementary) {
+          const discTag = document.createElement("span");
+          discTag.className = "discount-badge-line";
+          discTag.innerText = `Save ₹${evalRes.discountPerUnit}/${item.unit}`;
+          dims.appendChild(discTag);
+        }
+
+        const compBtn = document.createElement("button");
+        compBtn.className = `comp-toggle-btn ${item.complementary ? 'is-comp' : 'not-comp'}`;
+        compBtn.innerText = item.complementary ? 'Complimentary' : '+ Free';
+        compBtn.addEventListener("click", () => {
+          item.complementary = !item.complementary;
+          renderWorkspace();
+        });
+        dims.appendChild(compBtn);
+
+        info.appendChild(titleRow);
+        info.appendChild(dims);
+
+        const priceView = document.createElement("div");
+        priceView.className = `item-price-view ${!item.active ? 'is-off-text' : item.complementary ? 'is-comp-text' : ''}`;
+        priceView.innerText = !item.active ? 'off' : item.complementary ? 'FREE' : formatINR(evalRes.netCost);
+
+        line.appendChild(switchLabel);
+        line.appendChild(info);
+        line.appendChild(priceView);
+        itemsList.appendChild(line);
+      });
+
+      col.appendChild(itemsList);
+
+      const addItemBtn = document.createElement("button");
+      addItemBtn.className = "btn-add-item-row";
+      addItemBtn.innerText = "+ Add Item in " + (room.title || "Section");
+      addItemBtn.addEventListener("click", () => {
+        const newItemName = prompt("Enter new item name:");
+        if (!newItemName || !newItemName.trim()) return;
+
+        ensureInRateCard(newItemName.trim(), "sft", 1400);
+
+        room.items.push({
+          id: "i_" + Date.now(),
+          name: newItemName.trim(),
+          qty: 10,
+          unit: "sft",
+          customRate: null,
+          tierOverride: "inherit",
+          active: true,
+          complementary: false
+        });
+        renderWorkspace();
+      });
+      col.appendChild(addItemBtn);
+
+      totalDisplay.innerText = formatINR(roomSubtotal);
+      container.appendChild(col);
+    });
+
+    const netFinalPayable = Math.max(0, grandGrossTotal - grandSpecialDiscount - grandComplimentary);
+
+    document.getElementById("estimateBigPrice").innerText = formatINR(netFinalPayable);
+    const tierCapitalized = currentTier.charAt(0).toUpperCase() + currentTier.slice(1);
+    document.getElementById("estimateSubtitle").innerText = `Default ${tierCapitalized} finish, ${selectedCount} units selected`;
+
+    document.getElementById("grossSumDisplay").innerText = formatINR(grandGrossTotal);
+    
+    const discRow = document.getElementById("discLedgerRow");
+    const discTray = document.getElementById("discTray");
+    if (grandSpecialDiscount > 0) {
+      discRow.style.display = "flex";
+      document.getElementById("discSumDisplay").innerText = "- " + formatINR(grandSpecialDiscount);
+      
+      discTray.innerHTML = discountDetailEntries.map(d => `
+        <div class="benefit-item-entry">
+          <span><strong>${d.name}</strong> (${d.room}) <span style="opacity:0.75; font-size:0.72rem;">${d.qty} ${d.unit} @ ₹${d.appliedRate} <strike>₹${d.masterRate}</strike></span></span>
+          <span style="color:var(--orange-disc); font-weight:700;">-₹${d.savedAmt}</span>
+        </div>
+      `).join("");
+    } else {
+      discRow.style.display = "none";
+      discTray.style.display = "none";
+      discTray.innerHTML = "";
+    }
+
+    const compRow = document.getElementById("compLedgerRow");
+    const compTray = document.getElementById("compTray");
+    if (grandComplimentary > 0) {
+      compRow.style.display = "flex";
+      document.getElementById("compSumDisplay").innerText = "- " + formatINR(grandComplimentary);
+
+      compTray.innerHTML = compDetailEntries.map(c => `
+        <div class="benefit-item-entry">
+          <span><strong>${c.name}</strong> (${c.room}) <span style="opacity:0.75; font-size:0.72rem;">${c.qty} ${c.unit} waived</span></span>
+          <span style="color:var(--green-comp); font-weight:700;">-₹${c.waivedAmt}</span>
+        </div>
+      `).join("");
+    } else {
+      compRow.style.display = "none";
+      compTray.style.display = "none";
+      compTray.innerHTML = "";
+    }
+
+    document.getElementById("netFinalDisplay").innerText = formatINR(netFinalPayable);
+  }
+
+  // ==========================================================================
+  // TAB NAVIGATION CONTROLLER
+  // ==========================================================================
+  function switchTab(targetId) {
+    document.querySelectorAll(".nav-tab-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-target") === targetId);
+    });
+    document.querySelectorAll(".tab-section-view").forEach(sec => {
+      sec.classList.toggle("active", sec.id === targetId);
+    });
+
+    if (targetId === "tabProjects") renderProjectsDirectory();
+    if (targetId === "tabCompare") renderCompareSection();
+    if (targetId === "tabRateCard") renderMasterRateCardTable();
+    if (targetId === "tabRevisions") renderRevisionsSection();
+    if (targetId === "tabPreview") renderPreviewSection();
+  }
+
+  // ==========================================================================
+  // SECTION 1: PROJECTS (CLIENT INFO ONLY - NO AMOUNTS)
+  // ==========================================================================
+  function renderProjectsDirectory() {
+    const grid = document.getElementById("projectsGrid");
+    grid.innerHTML = "";
+
+    if (projectsDirectory.length === 0) {
+      grid.innerHTML = `<div style="color:var(--ix-text-dim); padding:20px;">No projects found. Click "+ Start New Project" to create one.</div>`;
+      return;
+    }
+
+    projectsDirectory.forEach((p, idx) => {
+      const card = document.createElement("div");
+      card.className = "project-item-card";
+      card.innerHTML = `
+        <div class="p-card-top">
+          <span class="p-card-title">${p.client}</span>
+          <span class="p-card-badge">${p.tier}</span>
+        </div>
+        <div class="p-card-site"><strong>Site:</strong> ${p.site}</div>
+        <div class="p-card-site"><strong>Contact:</strong> ${p.phone || '-'}</div>
+        <div class="p-card-site"><strong>Scope:</strong> ${p.scope}</div>
+        <div class="p-card-site"><strong>Date:</strong> ${p.date}</div>
+        <div style="font-size:0.74rem; color:var(--ix-text-dim);">Last Modified: ${p.updatedAt}</div>
+        <div class="p-card-actions">
+          <button class="btn-action-cta" style="padding:6px 14px; font-size:0.8rem;" onclick="loadProjectFromRegistry(${idx})">Open Quotation</button>
+          <button class="btn-danger-del" onclick="deleteProjectFromRegistry(${idx})">Delete</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function loadProjectFromRegistry(idx) {
+    const proj = projectsDirectory[idx];
+    currentProjectId = proj.id;
+    document.getElementById("custNameInput").value = proj.client;
+    document.getElementById("custSiteInput").value = proj.site;
+    document.getElementById("custPhoneInput").value = proj.phone || "";
+    document.getElementById("custDateInput").value = proj.date;
+    document.getElementById("custAreaInput").value = proj.scope;
+    
+    currentTier = proj.tier;
+    document.querySelectorAll(".tier-tab-btn").forEach(b => {
+      b.classList.toggle("active", b.getAttribute("data-tier") === currentTier);
+    });
+
+    activeRooms = JSON.parse(JSON.stringify(proj.rooms));
+    updateTierSpecsView();
+    renderWorkspace();
+    switchTab("tabQuotation");
+  }
+
+  function deleteProjectFromRegistry(idx) {
+    const target = projectsDirectory[idx];
+    if (confirm(`Are you sure you want to delete project for "${target.client}"? This action cannot be undone.`)) {
+      projectsDirectory.splice(idx, 1);
+      renderProjectsDirectory();
+    }
+  }
+
+  // ==========================================================================
+  // SECTION 3: COMPARE LOGIC
+  // ==========================================================================
+  function computeTierTotals(tier) {
+    let gross = 0;
+    let disc = 0;
+    let comp = 0;
+
+    const roomSummaries = activeRooms.map(room => {
+      let rTotal = 0;
+      room.items.forEach(i => {
+        if (!i.active) return;
+        const evalRes = evaluateItem(i, room, tier);
+        gross += evalRes.grossCost;
+        if (i.complementary) {
+          comp += evalRes.grossCost;
+        } else {
+          rTotal += evalRes.netCost;
+          if (evalRes.isDiscounted) disc += evalRes.totalDiscount;
+        }
+      });
+      return { title: room.title || "Section", total: rTotal };
+    });
+
+    const net = Math.max(0, gross - disc - comp);
+    return { gross, disc, comp, net, roomSummaries };
+  }
+
+  function renderCompareSection() {
+    const tbody = document.getElementById("compareMatrixBody");
+    tbody.innerHTML = "";
+
+    const std = computeTierTotals("standard");
+    const prm = computeTierTotals("premium");
+    const lux = computeTierTotals("luxury");
+
+    const headerRow = document.createElement("tr");
+    headerRow.style.background = "rgba(245, 200, 76, 0.08)";
+    headerRow.innerHTML = `
+      <td class="row-cat" style="font-size:1.05rem;">ESTIMATED NET PAYABLE</td>
+      <td><div class="compare-tier-price">${formatINR(std.net)}</div><small style="color:var(--ix-text-muted);">Standard Package</small></td>
+      <td><div class="compare-tier-price">${formatINR(prm.net)}</div><small style="color:var(--ix-text-muted);">Premium Package</small></td>
+      <td><div class="compare-tier-price" style="color:#ffde7a;">${formatINR(lux.net)}</div><small style="color:var(--ix-text-muted);">Luxury Package</small></td>
+    `;
+    tbody.appendChild(headerRow);
+
+    const grossRow = document.createElement("tr");
+    grossRow.innerHTML = `
+      <td class="row-cat">Gross Quote Value</td>
+      <td>${formatINR(std.gross)}</td>
+      <td>${formatINR(prm.gross)}</td>
+      <td>${formatINR(lux.gross)}</td>
+    `;
+    tbody.appendChild(grossRow);
+
+    activeRooms.forEach((r, idx) => {
+      const rRow = document.createElement("tr");
+      rRow.innerHTML = `
+        <td class="row-cat">• ${r.title || "Section"}</td>
+        <td>${formatINR(std.roomSummaries[idx].total)}</td>
+        <td>${formatINR(prm.roomSummaries[idx].total)}</td>
+        <td>${formatINR(lux.roomSummaries[idx].total)}</td>
+      `;
+      tbody.appendChild(rRow);
+    });
+
+    const specRow = document.createElement("tr");
+    specRow.innerHTML = `
+      <td class="row-cat">Material Quality Highlights</td>
+      <td><pre style="white-space:pre-wrap; font-size:0.75rem; color:#ccc;">${materialSpecsDictionary.standard}</pre></td>
+      <td><pre style="white-space:pre-wrap; font-size:0.75rem; color:#ccc;">${materialSpecsDictionary.premium}</pre></td>
+      <td><pre style="white-space:pre-wrap; font-size:0.75rem; color:#ccc;">${materialSpecsDictionary.luxury}</pre></td>
+    `;
+    tbody.appendChild(specRow);
+  }
+
+  // ==========================================================================
+  // SECTION 4: MASTER RATE CARD LOGIC
+  // ==========================================================================
+  function renderMasterRateCardTable(query = "") {
+    const tbody = document.getElementById("masterRateTableBody");
+    tbody.innerHTML = "";
+
+    const filtered = masterRateCard.filter(c => c.name.toLowerCase().includes(query.toLowerCase()));
+
+    filtered.forEach((card) => {
+      const realIdx = masterRateCard.indexOf(card);
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><strong>${card.name}</strong></td>
+        <td><span class="unit-tag">${card.unit}</span></td>
+        <td><input type="number" value="${card.standard}" onchange="masterRateCard[${realIdx}].standard = parseFloat(this.value)||0; renderWorkspace();" /></td>
+        <td><input type="number" value="${card.premium}" onchange="masterRateCard[${realIdx}].premium = parseFloat(this.value)||0; renderWorkspace();" /></td>
+        <td><input type="number" value="${card.luxury}" onchange="masterRateCard[${realIdx}].luxury = parseFloat(this.value)||0; renderWorkspace();" /></td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  // ==========================================================================
+  // SECTION 5: REVISIONS
+  // ==========================================================================
+  function createRevisionCheckpoint(customNote = "") {
+    const clientName = (document.getElementById("custNameInput").value || "Unnamed Client").trim();
+    const net = document.getElementById("estimateBigPrice").innerText;
+    const now = new Date();
+    const timeStr = now.toLocaleDateString() + " " + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const clientRevs = allRevisionsRepository.filter(r => r.client.toLowerCase() === clientName.toLowerCase());
+    const nextRevNum = clientRevs.length + 1;
+
+    const newRev = {
+      revId: "REV-" + Date.now(),
+      client: clientName,
+      revNum: nextRevNum,
+      timestamp: timeStr,
+      tier: currentTier,
+      total: net,
+      notes: customNote || `Revision #${nextRevNum} for ${clientName}`,
+      snapshot: JSON.parse(JSON.stringify(activeRooms))
+    };
+
+    allRevisionsRepository.unshift(newRev);
+
+    alert(`Revision saved automatically under ${clientName}'s folder!`);
+    renderRevisionsSection();
+  }
+
+  function renderRevisionsSection() {
+    const container = document.getElementById("clientFoldersContainer");
+    container.innerHTML = "";
+
+    if (allRevisionsRepository.length === 0) {
+      container.innerHTML = `<div style="color:var(--ix-text-dim); padding:20px;">No revisions saved yet. Click "+ Save Current Scope as Revision" to save one.</div>`;
+      return;
+    }
+
+    const grouped = {};
+    allRevisionsRepository.forEach(rev => {
+      if (!grouped[rev.client]) grouped[rev.client] = [];
+      grouped[rev.client].push(rev);
+    });
+
+    Object.keys(grouped).forEach(client => {
+      const revisions = grouped[client];
+      const folderCard = document.createElement("div");
+      folderCard.className = "client-folder-card";
+
+      const folderHeader = document.createElement("div");
+      folderHeader.className = "client-folder-header";
+      folderHeader.innerHTML = `
+        <div class="client-folder-title">
+          <span>📁 ${client}</span>
+          <span class="client-folder-count">${revisions.length} Revisions</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button class="btn-danger-del" style="padding:4px 10px; font-size:0.75rem;" onclick="deleteEntireClientFolder('${client}')">Delete Folder</button>
+          <span style="color:var(--ix-text-muted); font-size:0.9rem;">▾</span>
+        </div>
+      `;
+
+      const listDiv = document.createElement("div");
+      listDiv.className = "client-revisions-list";
+
+      folderHeader.addEventListener("click", (e) => {
+        if (e.target.tagName.toLowerCase() === "button") return;
+        listDiv.style.display = listDiv.style.display === "none" ? "flex" : "none";
+      });
+
+      revisions.forEach(rev => {
+        const row = document.createElement("div");
+        row.className = "revision-entry-row";
+        row.title = "Click anywhere on this revision to open it immediately";
+        
+        row.addEventListener("click", (e) => {
+          if (e.target.tagName.toLowerCase() === "button") return;
+          loadRevisionToWorkspace(rev);
+        });
+
+        row.innerHTML = `
+          <div>
+            <span class="rev-tag">REV #${rev.revNum}</span>
+            <strong style="color:#fff;">${rev.notes}</strong>
+            <div class="rev-meta">${rev.timestamp} • Package: ${rev.tier.toUpperCase()} (Click to open)</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="rev-amount">${rev.total}</span>
+            <button class="btn-action-cta" style="padding:5px 12px; font-size:0.78rem;" onclick="loadRevisionToWorkspace(allRevisionsRepository.find(r => r.revId === '${rev.revId}'))">Open</button>
+            <button class="btn-danger-del" style="padding:5px 10px; font-size:0.78rem;" onclick="deleteSingleRevisionById('${rev.revId}')">Delete</button>
+          </div>
+        `;
+        listDiv.appendChild(row);
+      });
+
+      folderCard.appendChild(folderHeader);
+      folderCard.appendChild(listDiv);
+      container.appendChild(folderCard);
+    });
+  }
+
+  function loadRevisionToWorkspace(rev) {
+    if (!rev) return;
+    activeRooms = JSON.parse(JSON.stringify(rev.snapshot));
+    currentTier = rev.tier;
+    document.getElementById("custNameInput").value = rev.client;
+
+    document.querySelectorAll(".tier-tab-btn").forEach(b => {
+      b.classList.toggle("active", b.getAttribute("data-tier") === currentTier);
+    });
+
+    updateTierSpecsView();
+    renderWorkspace();
+    switchTab("tabQuotation");
+  }
+
+  function deleteSingleRevisionById(revId) {
+    const rev = allRevisionsRepository.find(r => r.revId === revId);
+    if (!rev) return;
+
+    if (confirm(`Delete revision #${rev.revNum} for ${rev.client}?`)) {
+      allRevisionsRepository = allRevisionsRepository.filter(r => r.revId !== revId);
+      renderRevisionsSection();
+    }
+  }
+
+  function deleteEntireClientFolder(clientName) {
+    if (confirm(`Delete ALL revisions in the folder for "${clientName}"? This cannot be undone.`)) {
+      allRevisionsRepository = allRevisionsRepository.filter(r => r.client.toLowerCase() !== clientName.toLowerCase());
+      renderRevisionsSection();
+    }
+  }
+
+  // ==========================================================================
+  // SECTION 6: PREVIEW & LIVE EDITABLE PRINT SHEET
+  // ==========================================================================
+  function renderPreviewSection() {
+    document.getElementById("sheetClientName").innerText = document.getElementById("custNameInput").value || "Valued Client";
+    document.getElementById("sheetSiteAddress").innerText = document.getElementById("custSiteInput").value || "-";
+    document.getElementById("sheetQuoteDate").innerText = document.getElementById("custDateInput").value || "-";
+    document.getElementById("sheetScope").innerText = document.getElementById("custAreaInput").value || "-";
+
+    const tierName = currentTier.toUpperCase();
+    document.getElementById("sheetTierBadge").innerText = `${tierName} PACKAGE`;
+    document.getElementById("sheetSpecsPre").innerText = materialSpecsDictionary[currentTier];
+
+    const container = document.getElementById("sheetTablesContainer");
+    container.innerHTML = "";
+
+    let pGross = 0;
+    let pDisc = 0;
+    let pComp = 0;
+
+    activeRooms.forEach(room => {
+      const activeItems = room.items.filter(i => i.active);
+      if (activeItems.length === 0) return;
+
+      const secDiv = document.createElement("div");
+      secDiv.style.marginBottom = "18px";
+
+      const title = document.createElement("h3");
+      title.style.cssText = "font-size:0.95rem; font-weight:800; text-transform:uppercase; background:#f4f1ea; padding:4px 8px; border-left:3px solid #a87900; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;";
+      
+      const roomTierBadge = room.tierOverride && room.tierOverride !== 'inherit' 
+        ? `<span style="font-size:0.7rem; color:#a87900; font-weight:800;">[${room.tierOverride.toUpperCase()} FINISH]</span>` 
+        : '';
+      
+      title.innerHTML = `<span>${room.title || "Section Scope"}</span> ${roomTierBadge}`;
+      secDiv.appendChild(title);
+
+      const table = document.createElement("table");
+      table.className = "sheet-table";
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th style="width: 46%;">Item Description</th>
+            <th style="width: 16%;">Qty / Unit</th>
+            <th style="width: 20%;">Rate (₹)</th>
+            <th style="width: 18%; text-align:right;">Amount (₹)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
+
+      const tbody = table.querySelector("tbody");
+      let secSub = 0;
+
+      activeItems.forEach(item => {
+        const evalRes = evaluateItem(item, room);
+        pGross += evalRes.grossCost;
+
+        let amountStr = "";
+        if (item.complementary) {
+          pComp += evalRes.grossCost;
+          amountStr = "COMPLIMENTARY";
+        } else {
+          secSub += evalRes.netCost;
+          if (evalRes.isDiscounted) pDisc += evalRes.totalDiscount;
+          amountStr = formatINR(evalRes.netCost);
+        }
+
+        const tierTag = evalRes.isTierOverridden ? ` <span style="font-size:0.68rem; color:#a87900; font-weight:800;">[${evalRes.effectiveTier.toUpperCase()}]</span>` : '';
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td contenteditable="true"><strong>${item.name}</strong>${tierTag}</td>
+          <td contenteditable="true">${item.qty} ${item.unit}</td>
+          <td contenteditable="true">₹${evalRes.effectiveRate}</td>
+          <td style="text-align:right; font-weight:700;">${amountStr}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const totalRow = document.createElement("tr");
+      totalRow.style.fontWeight = "800";
+      totalRow.style.background = "#fafafa";
+      totalRow.innerHTML = `
+        <td colspan="3" style="text-align:right;">SECTION SUBTOTAL:</td>
+        <td style="text-align:right;">${formatINR(secSub)}</td>
+      `;
+      tbody.appendChild(totalRow);
+
+      secDiv.appendChild(table);
+      container.appendChild(secDiv);
+    });
+
+    const pNet = Math.max(0, pGross - pDisc - pComp);
+    document.getElementById("sheetGrossVal").innerText = formatINR(pGross);
+
+    const discRow = document.getElementById("sheetDiscRow");
+    if (pDisc > 0) {
+      discRow.style.display = "flex";
+      document.getElementById("sheetDiscVal").innerText = "- " + formatINR(pDisc);
+    } else {
+      discRow.style.display = "none";
+    }
+
+    const compRow = document.getElementById("sheetCompRow");
+    if (pComp > 0) {
+      compRow.style.display = "flex";
+      document.getElementById("sheetCompVal").innerText = "- " + formatINR(pComp);
+    } else {
+      compRow.style.display = "none";
+    }
+
+    document.getElementById("sheetNetVal").innerText = formatINR(pNet);
+  }
+
+  // ==========================================================================
+  // ITEM MODAL HANDLERS
+  // ==========================================================================
+  function openItemModal(roomId, itemId) {
+    const room = activeRooms.find(r => r.id === roomId);
+    if (!room) return;
+    const itm = room.items.find(i => i.id === itemId);
+    if (!itm) return;
+
+    activeEditContext = { roomId, itemId };
+    const evalRes = evaluateItem(itm, room);
+    const appliedRate = itm.customRate !== null ? itm.customRate : evalRes.masterRate;
+
+    document.getElementById("modalItemHeader").innerText = "Edit: " + itm.name;
+    document.getElementById("modalInputName").value = itm.name;
+    document.getElementById("modalInputQty").value = itm.qty;
+    document.getElementById("modalInputUnit").value = itm.unit;
+    document.getElementById("modalInputTier").value = itm.tierOverride || "inherit";
+    document.getElementById("modalInputRate").value = appliedRate;
+    document.getElementById("modalInputComp").checked = !!itm.complementary;
+
+    const hint = document.getElementById("modalRateHint");
+    hint.innerText = `Master Rate for ${evalRes.effectiveTier.toUpperCase()}: ₹${evalRes.masterRate}/${itm.unit}. (Enter a lower value to provide a Special Discount)`;
+
+    document.getElementById("modalInputTier").onchange = (e) => {
+      const selectedTier = e.target.value === "inherit" ? resolveEffectiveTier({ tierOverride: 'inherit' }, room) : e.target.value;
+      const newMasterRate = getMasterBaseRate(itm.name, selectedTier);
+      hint.innerText = `Master Rate for ${selectedTier.toUpperCase()}: ₹${newMasterRate}/${itm.unit}.`;
+      document.getElementById("modalInputRate").value = newMasterRate;
+    };
+
+    document.getElementById("editItemModal").classList.add("active");
+  }
+
+  function saveItemModal() {
+    if (!activeEditContext) return;
+    const room = activeRooms.find(r => r.id === activeEditContext.roomId);
+    if (room) {
+      const itm = room.items.find(i => i.id === activeEditContext.itemId);
+      if (itm) {
+        const newName = document.getElementById("modalInputName").value.trim() || itm.name;
+        const newUnit = document.getElementById("modalInputUnit").value.trim() || itm.unit;
+        const newQty = parseFloat(document.getElementById("modalInputQty").value) || 0;
+        const newTier = document.getElementById("modalInputTier").value;
+        const enteredRate = parseFloat(document.getElementById("modalInputRate").value);
+
+        itm.name = newName;
+        itm.unit = newUnit;
+        itm.qty = newQty;
+        itm.tierOverride = newTier;
+        itm.complementary = document.getElementById("modalInputComp").checked;
+
+        ensureInRateCard(newName, newUnit, enteredRate || 1400);
+
+        const effectiveTier = resolveEffectiveTier(itm, room);
+        const masterRate = getMasterBaseRate(newName, effectiveTier);
+        if (!isNaN(enteredRate) && enteredRate !== masterRate) {
+          itm.customRate = enteredRate;
+        } else {
+          itm.customRate = null;
+        }
+      }
+    }
+    document.getElementById("editItemModal").classList.remove("active");
+    activeEditContext = null;
+    renderWorkspace();
+  }
+
+  function deleteItemModal() {
+    if (!activeEditContext) return;
+    const room = activeRooms.find(r => r.id === activeEditContext.roomId);
+    if (room) {
+      room.items = room.items.filter(i => i.id !== activeEditContext.itemId);
+    }
+    document.getElementById("editItemModal").classList.remove("active");
+    activeEditContext = null;
+    renderWorkspace();
+  }
+
+  // ==========================================================================
+  // EVENT LISTENERS & INITIAL SETUP
+  // ==========================================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".nav-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-target");
+        switchTab(target);
+      });
+    });
+
+    document.querySelectorAll(".unit-pill").forEach(pill => {
+      pill.addEventListener("click", () => {
+        document.querySelectorAll(".unit-pill").forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        const type = pill.getAttribute("data-type");
+        activeRooms = getPresetRooms(type);
+        renderWorkspace();
+      });
+    });
+
+    document.querySelectorAll(".tier-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tier-tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentTier = btn.getAttribute("data-tier");
+        updateTierSpecsView();
+        renderWorkspace();
+      });
+    });
+
+    document.getElementById("btnAddEmptySection").addEventListener("click", () => {
+      activeRooms.push({
+        id: "r_custom_" + Date.now(),
+        title: "",
+        tierOverride: "inherit",
+        items: []
+      });
+      renderWorkspace();
+    });
+
+    // IN-PLACE SAVE CURRENT QUOTATION VERSION
+    document.getElementById("btnSaveCurrentQuotationDirect").addEventListener("click", saveCurrentQuotationDirect);
+    document.getElementById("btnSaveCurrentQuotationSidebar").addEventListener("click", saveCurrentQuotationDirect);
+
+    // Save Milestone Revision Handlers
+    document.getElementById("btnQuickSaveRevision").addEventListener("click", () => {
+      const clientName = document.getElementById("custNameInput").value || "Valued Client";
+      const note = prompt(`Enter revision note for client "${clientName}":`, "Client requested design updates");
+      if (note !== null) createRevisionCheckpoint(note);
+    });
+
+    document.getElementById("btnCreateNewRevisionNow").addEventListener("click", () => {
+      const clientName = document.getElementById("custNameInput").value || "Valued Client";
+      const note = prompt(`Enter revision note for client "${clientName}":`, "Snapshot update");
+      if (note !== null) createRevisionCheckpoint(note);
+    });
+
+    document.getElementById("rateCardSearch").addEventListener("input", (e) => {
+      renderMasterRateCardTable(e.target.value);
+    });
+
+    document.getElementById("btnAddNewRateCardItem").addEventListener("click", () => {
+      const name = prompt("Enter item name:");
+      if (!name || !name.trim()) return;
+      const unit = prompt("Enter unit (sft, rft, nos):", "sft") || "sft";
+      const rate = parseFloat(prompt("Enter standard baseline rate (₹):", "1200")) || 1200;
+      ensureInRateCard(name, unit, rate);
+      renderMasterRateCardTable();
+    });
+
+    // COMPREHENSIVE NEW PROJECT MODAL
+    document.getElementById("btnOpenNewProjectModal").addEventListener("click", () => {
+      document.getElementById("newProjectModal").classList.add("active");
+    });
+
+    document.getElementById("btnCancelNewProject").addEventListener("click", () => {
+      document.getElementById("newProjectModal").classList.remove("active");
+    });
+
+    document.getElementById("btnCreateProjectSubmit").addEventListener("click", () => {
+      const clientName = document.getElementById("npClientName").value.trim() || "New Client";
+      const siteAddr = document.getElementById("npSiteAddress").value.trim() || "Site Location";
+      const phone = document.getElementById("npContactPhone").value.trim() || "-";
+      const dateVal = document.getElementById("npQuoteDate").value.trim() || "11/09/2026";
+      const typology = document.getElementById("npTypology").value;
+      const tierVal = document.getElementById("npFinishTier").value;
+      const builtArea = document.getElementById("npBuiltArea").value.trim() || `${typology.toUpperCase()} Unit`;
+
+      currentProjectId = "PRJ-" + Math.floor(1000 + Math.random() * 9000);
+      currentTier = tierVal;
+      activeRooms = getPresetRooms(typology);
+
+      document.getElementById("custNameInput").value = clientName;
+      document.getElementById("custSiteInput").value = siteAddr;
+      document.getElementById("custPhoneInput").value = phone;
+      document.getElementById("custDateInput").value = dateVal;
+      document.getElementById("custAreaInput").value = builtArea;
+
+      document.querySelectorAll(".unit-pill").forEach(p => {
+        p.classList.toggle("active", p.getAttribute("data-type") === typology);
+      });
+
+      document.querySelectorAll(".tier-tab-btn").forEach(b => {
+        b.classList.toggle("active", b.getAttribute("data-tier") === currentTier);
+      });
+
+      const now = new Date();
+      const timeStr = now.toLocaleDateString() + " " + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      projectsDirectory.unshift({
+        id: currentProjectId,
+        client: clientName,
+        site: siteAddr,
+        phone: phone,
+        date: dateVal,
+        scope: builtArea,
+        tier: currentTier,
+        rooms: JSON.parse(JSON.stringify(activeRooms)),
+        updatedAt: timeStr
+      });
+
+      document.getElementById("newProjectModal").classList.remove("active");
+      updateTierSpecsView();
+      renderWorkspace();
+      renderProjectsDirectory();
+      switchTab("tabQuotation");
+    });
+
+    document.getElementById("btnGoToPreview").addEventListener("click", () => {
+      switchTab("tabPreview");
+    });
+
+    document.getElementById("btnPrintFromPreview").addEventListener("click", () => window.print());
+
+    document.getElementById("btnModalSave").addEventListener("click", saveItemModal);
+    document.getElementById("btnModalCancel").addEventListener("click", () => {
+      document.getElementById("editItemModal").classList.remove("active");
+    });
+    document.getElementById("btnModalDelete").addEventListener("click", deleteItemModal);
+
+    document.querySelectorAll(".collapsible-head").forEach(head => {
+      head.addEventListener("click", () => {
+        const targetId = head.getAttribute("data-target");
+        const el = document.getElementById(targetId);
+        if (el) el.style.display = (el.style.display === "none") ? "block" : "none";
+      });
+    });
+
+    document.getElementById("discLedgerRow").addEventListener("click", () => {
+      const tray = document.getElementById("discTray");
+      tray.style.display = (tray.style.display === "none" || tray.style.display === "") ? "block" : "none";
+    });
+
+    document.getElementById("compLedgerRow").addEventListener("click", () => {
+      const tray = document.getElementById("compTray");
+      tray.style.display = (tray.style.display === "none" || tray.style.display === "") ? "block" : "none";
+    });
+
+    // Initial setup
+    updateTierSpecsView();
+    renderWorkspace();
+    renderMasterRateCardTable();
+  });
+</script>
+</body>
+</html>
